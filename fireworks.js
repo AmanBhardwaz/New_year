@@ -61,21 +61,14 @@
   const music = document.getElementById("bg-music");
   const toggle = document.getElementById("music-toggle");
   if (music && toggle) {
-    // autoplay may be blocked; start when user interacts
-    const initPlay = () => {
-      music.play().catch(() => {});
-      document.removeEventListener("click", initPlay);
-    };
-    document.addEventListener("click", initPlay);
-
     toggle.addEventListener("click", (e) => {
       e.stopPropagation();
       if (music.paused) {
         music.play();
-        toggle.style.opacity = 1;
+        toggle.textContent = "Pause Music";
       } else {
         music.pause();
-        toggle.style.opacity = 0.5;
+        toggle.textContent = "Play Music";
       }
     });
   }

@@ -325,6 +325,29 @@ body.celebration {
   opacity: 0.9;
 }
 
+.music-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 9999px;
+  background: rgba(253, 164, 175, 0.9);
+  color: #1a1a1a;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+  backdrop-filter: blur(6px);
+  transition: background 0.3s ease;
+  z-index: 100;
+}
+.music-btn:hover {
+  background: rgba(253, 164, 175, 1);
+}
+
+/* keep old icon styles (not used) */
 .music-icon {
   position: absolute;
   bottom: 20px;
