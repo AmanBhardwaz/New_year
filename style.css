@@ -1,0 +1,345 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  background: rgba(255, 196, 206, 0.4);
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.btn:hover {
+  background: rgba(255, 196, 206, 0.6);
+}
+
+/* Decorative gradient blobs */
+.decorative-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.orb-1 {
+  top: 25%;
+  left: 25%;
+  width: 250px;
+  height: 250px;
+  background: rgba(249, 168, 212, 0.2);
+}
+
+.orb-2 {
+  bottom: 25%;
+  right: 25%;
+  width: 320px;
+  height: 320px;
+  background: rgba(253, 164, 175, 0.2);
+}
+
+/* Landing Page */
+body.landing {
+  background: linear-gradient(to bottom right, #FFF5F0, #FFE8E0, #FFD5C8);
+  position: relative;
+  overflow: hidden;
+}
+
+#petals-container, #petals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(to bottom right, rgba(251, 207, 232, 0.6), rgba(251, 113, 133, 0.4));
+  border-radius: 50%;
+  opacity: 0.9;
+  filter: blur(1px) drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateX(0) translateY(-5vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--x-offset)) translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+/* romantic color overlay */
+body.poem::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 106, 150, 0.25), rgba(0, 0, 0, 0.6));
+  mix-blend-mode: screen;
+  z-index: -2;
+}
+
+/* Poem Page */
+body.poem {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: #fff9f5;
+  text-align: left;
+  padding: 2rem;
+  background: #000;
+}
+
+body.poem::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--bg-img);
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px) brightness(0.5);
+  z-index: -3;
+}
+
+.poem-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: nowrap;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  line-height: 1.7;
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .poem-container {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .frames {
+    flex-direction: column;
+  }
+  .photo-frame {
+    flex: 0 0 auto;
+    width: 90vw;
+  }
+  .poem-text {
+    max-width: 90vw;
+  }
+  .btn {
+    width: 80%;
+  }
+  .greeting h1 {
+    font-size: clamp(2rem, 10vw, 4rem);
+  }
+}
+
+.photo-frame {
+  flex: 0 0 320px;
+  width: 320px;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.poem-text {
+  flex: 1 1 380px;
+  max-width: 600px;
+  color: #FFF9F5;
+  text-align: left;
+}
+
+/* Frames layout */
+.frames {
+  display: flex;
+  width: 100%;
+  gap: 3rem;
+}
+.frame {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.poem-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.continue-btn {
+  margin: 2rem auto 0;
+  display: block;
+  background: rgba(255, 196, 206, 0.8);
+  color: #fff;
+  text-align: center;
+}
+.continue-btn:hover {
+  background: rgba(255, 196, 206, 1);
+}
+
+@media (max-width: 480px) {
+  .continue-btn {
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    width: 80%;
+    z-index: 50;
+  }
+}
+
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.read-slowly {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-top: 1.5rem;
+}
+
+/* Celebration Page */
+body.celebration {
+  background: linear-gradient(to bottom, #1a1a3a, #2a1a3a, #3a1a3a);
+  color: #ede7f6;
+  overflow: hidden;
+  position: relative;
+}
+
+.stars-container, .spark {
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+.firework, .spark {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.greeting {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.greeting h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+}
+
+.greeting p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.music-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  cursor: pointer;
+  fill: #fff;
+  opacity: 0.8;
+}
+
+.music-icon:hover {
+  opacity: 1;
+}
+
+/* Utility */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
